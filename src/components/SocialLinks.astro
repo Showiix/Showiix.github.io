@@ -1,0 +1,16 @@
+---
+import { siGooglescholar } from "simple-icons";
+import { Mail } from "lucide-static";
+import { EMAIL, GOOGLE_SCHOLAR } from "../config";
+
+const { class: className = "", itemClass = "" } = Astro.props;
+---
+
+<div class={className}>
+    <a href={GOOGLE_SCHOLAR} target="_blank" class={itemClass} aria-label="Google Scholar" title="Google Scholar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d={siGooglescholar.path}></path>
+        </svg>
+    </a>
+    <a href={`mailto:${EMAIL}`} class={itemClass} aria-label="Email" title={EMAIL} set:html={Mail} />
+</div>

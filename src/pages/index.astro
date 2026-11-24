@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+
+// 最新的放在最上面
+const news = [
+  { date: "2026-11", text: "CARE has been accepted by Knowledge-Based Systems (CCF-C, CAS Zone 1 Top, JCR Q1)." },
+  { date: "2026-11", text: "PRELUDE is released on arXiv." },
+  { date: "2026-10", text: "FreshCast is released on arXiv." },
+  { date: "2026-08", text: "RASF has been accepted by PRICAI 2026 (CCF-C)." },
+];
+
+const formatMonth = (date: string) =>
+  new Date(`${date}-01T00:00:00Z`).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="flex flex-col md:flex-row gap-8 items-start">
+      <div class="flex-shrink-0">
+        <img src="/profile.jpg" width="225" alt="Jianyu Xu" class="rounded-lg shadow-lg" />
+      </div>
+      <div class="flex-1">
+        <div class="text-xl py-1">Jianyu Xu</div>
+        <div class="text-3xl font-bold">Undergraduate Student</div>
+        <div class="text-xl py-2">
+          Aberdeen Institute of Data Science and Artificial Intelligence<br />
+          South China Normal University<br />
+          Foshan, China
+        </div>
+        <SocialLinks class="mt-4 flex gap-3" />
+      </div>
+    </div>
+
+    <div class="mt-8 text-lg">
+      <p class="mb-4">
+        I am an undergraduate student at the Aberdeen Institute of Data Science and Artificial Intelligence, South China
+        Normal University. My research focuses on time series forecasting.
+      </p>
+      <p class="mb-4"><b>Research Interests:</b> Time Series Forecasting.</p>
+    </div>
+
+    <div class="text-3xl w-full font-bold mb-5 mt-10">News</div>
+    <ul class="list-disc list-inside space-y-2 text-base">
+      {news.map((item) => <li>{formatMonth(item.date)} - {item.text}</li>)}
+    </ul>
+  </div>
+</BaseLayout>

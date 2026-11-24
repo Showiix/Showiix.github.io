@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const groups = [
+  {
+    title: "Education",
+    items: [
+      {
+        name: "South China Normal University",
+        period: "2024-",
+        detail: "B.Eng. in Artificial Intelligence, Aberdeen Institute of Data Science and Artificial Intelligence",
+      },
+    ],
+  },
+  {
+    title: "Team",
+    items: [{ name: "AutoBits Team", period: "2025-", detail: "Member" }],
+  },
+];
+---
+
+<BaseLayout title="Experience" sideBarActiveItemID="experience">
+  <div class="pb-12 mt-5">
+    <div class="text-5xl font-bold">Experience</div>
+    {
+      groups.map((group) => (
+        <div class="mt-8">
+          <h3 class="text-3xl font-bold mb-6 border-b-2 border-primary pb-2">{group.title}</h3>
+          <ul class="space-y-3 text-base ml-4">
+            {group.items.map((item) => (
+              <li class="flex items-start">
+                <span class="text-primary mr-2">▸</span>
+                <div>
+                  <span class="font-semibold">{item.name}</span>, {item.period}
+                  <br />
+                  <span class="text-sm text-gray-600">{item.detail}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>
